@@ -10,12 +10,13 @@ MODULE = Proc::Wait3		PACKAGE = Proc::Wait3
 PROTOTYPES: DISABLE
 
 void
-wait3()
-    PPCODE:
+wait3(block)
+  int block
+  PPCODE:
     int stat;
     struct rusage r;
     pid_t pid;
-    pid = wait3(&stat, WNOHANG, &r);
+    pid = wait3(&stat, block ? 0 : WNOHANG, &r);
     if (pid > 0)
     {
 	EXTEND(sp, 18);

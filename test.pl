@@ -19,23 +19,15 @@ my $childpid = fork();
 
 if ($childpid == 0)
 {
-    system("/bin/ls > /dev/null");
     sleep 3;
     exit 0;
 }
 
 print "Forked child $childpid\n";
 
-my ($pid, $status, @resources);
+my ($pid, $status, @resources) = wait3(1);
 
-do
-{
-    ($pid, $status, @resources) = wait3();
-    print ".";
-    sleep 1;
-} until defined($pid);
-
-print "\nPID = [$pid], STATUS = [$status]\n";
-print "Resources: " . join(',', @resources), "\n";
+print "PID = [$pid], STATUS = [$status]\n";
+print "Resources: ", join(',', @resources), "\n";
 
 ok(2);

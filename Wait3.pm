@@ -9,7 +9,7 @@ require DynaLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 our @EXPORT = qw(wait3);
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 bootstrap Proc::Wait3 $VERSION;
 
@@ -26,14 +26,20 @@ Proc::Wait3 - Perl extension for wait3 system call
 
   ($pid, $status, $utime, $stime, $maxrss, $ixrss, $idrss, $isrss,
   $minflt, $majflt, $nswap, $inblock, $oublock, $msgsnd, $msgrcv,
-  $nsignals, $nvcsw, $nivcsw) = wait3();
+  $nsignals, $nvcsw, $nivcsw) = wait3(0); # doesn't wait
+
+  ($pid, $status, $utime, $stime, $maxrss, $ixrss, $idrss, $isrss,
+  $minflt, $majflt, $nswap, $inblock, $oublock, $msgsnd, $msgrcv,
+  $nsignals, $nvcsw, $nivcsw) = wait3(1); # waits for a child
 
 =head1 DESCRIPTION
 
 If any child processes have exited, this call will "reap" the zombies
 similar to the perl "wait" function.
 
-If there are no dead children, everything will be undefined.
+By default, it will return immediately and if there are no dead
+children, everything will be undefined.  If you pass in a true
+argument, it will block until a child exits (or it gets a signal).
 
  $pid         PID of exiting child
 
