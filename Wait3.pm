@@ -9,7 +9,7 @@ require DynaLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 our @EXPORT = qw(wait3);
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 bootstrap Proc::Wait3 $VERSION;
 

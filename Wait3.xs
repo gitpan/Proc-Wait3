@@ -23,9 +23,9 @@ wait3(block)
         PUSHs(sv_2mortal(newSViv(pid)));
         PUSHs(sv_2mortal(newSViv(stat)));
         PUSHs(sv_2mortal(newSVnv(r.ru_utime.tv_sec
-	                         + r.ru_utime.tv_usec/1000.0)));
+	                         + r.ru_utime.tv_usec/1000000.0)));
         PUSHs(sv_2mortal(newSVnv(r.ru_stime.tv_sec
-	                         + r.ru_stime.tv_usec/1000.0)));
+	                         + r.ru_stime.tv_usec/1000000.0)));
         PUSHs(sv_2mortal(newSViv(r.ru_maxrss)));
         PUSHs(sv_2mortal(newSViv(r.ru_ixrss)));
         PUSHs(sv_2mortal(newSViv(r.ru_idrss)));
