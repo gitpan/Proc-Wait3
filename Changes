@@ -11,3 +11,7 @@ Revision history for Perl extension Proc::Wait3.
 0.03 Tue Aug 28 08:13:50 EDT 2007
         - Bug fix: divide *.tv_usec by 10^6 (usec) instead of 10^3 (msec)
           Reported by Frank Burkhardt
+
+0.04 Wed Feb 16 06:54:47 EST 2011
+        - Clarified license as "GPL and Artistic" per request from
+          Ralf Corsépius

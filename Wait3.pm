@@ -9,7 +9,7 @@ require DynaLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 our @EXPORT = qw(wait3);
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 bootstrap Proc::Wait3 $VERSION;
 
@@ -83,6 +83,11 @@ argument, it will block until a child exits (or it gets a signal).
 =head1 AUTHOR
 
 C. Tilmes E<lt>curt@tilmes.orgE<gt>
+
+=head1 LICENSE
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =head1 SEE ALSO
 
